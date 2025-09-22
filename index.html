@@ -2,46 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HxD Empire Guide</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; display: flex; }
-        #sidebar { width: 200px; background: #f0f0f0; height: 100vh; position: fixed; padding: 10px; }
-        #content { margin-left: 220px; padding: 20px; }
-        a { display: block; margin: 5px 0; text-decoration: none; color: black; }
-        a:hover { color: blue; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; min-height: 100vh; background: #f5f5f5; color: #333; }
+        #sidebar { width: 250px; background: #2c3e50; color: #ecf0f1; position: fixed; height: 100%; padding: 20px 0; }
+        #sidebar h3 { padding: 10px 20px; font-size: 1.2em; border-bottom: 1px solid #34495e; }
+        #sidebar a { display: block; padding: 10px 20px; text-decoration: none; color: #ecf0f1; transition: background 0.3s; }
+        #sidebar a:hover, #sidebar a.active { background: #34495e; }
+        #content { margin-left: 250px; padding: 30px; max-width: 800px; }
+        #content h1 { color: #2c3e50; margin-bottom: 15px; }
+        #content p { line-height: 1.6; margin-bottom: 10px; }
         .hidden { display: none; }
+        button { background: #3498db; color: white; border: none; padding: 10px 15px; margin-top: 10px; cursor: pointer; border-radius: 5px; }
+        button:hover { background: #2980b9; }
+        @media (max-width: 768px) {
+            #sidebar { width: 100%; height: auto; position: relative; }
+            #content { margin-left: 0; padding: 20px; }
+        }
     </style>
 </head>
 <body>
     <div id="sidebar">
-        <h3>Guide Pages (Bottom to Top)</h3>
-        <a href="#t7" onclick="loadPage('t7')">T7: Solutions</a>
-        <a href="#t6" onclick="loadPage('t6')">T6: Departments</a>
-        <a href="#t5" onclick="loadPage('t5')">T5: Business Units</a>
-        <a href="#t4" onclick="loadPage('t4')">T4: Companies</a>
-        <a href="#t3" onclick="loadPage('t3')">T3: Holding Companies</a>
-        <a href="#t2" onclick="loadPage('t2')">T2: Private Trust Company</a>
-        <a href="#t1" onclick="loadPage('t1')">T1: Conglomerate/Empire</a>
-        <a id="hidden-link" class="hidden" href="#hidden" onclick="loadPage('hidden')">Hidden Page</a>
+        <h3>HxD Empire Guide</h3>
+        <a href="#t7" onclick="loadPage('t7', this)" class="active">T7: Solutions</a>
+        <a href="#t6" onclick="loadPage('t6', this)">T6: Departments</a>
+        <a href="#t5" onclick="loadPage('t5', this)">T5: Business Units</a>
+        <a href="#t4" onclick="loadPage('t4', this)">T4: Companies</a>
+        <a href="#t3" onclick="loadPage('t3', this)">T3: Holding Companies</a>
+        <a href="#t2" onclick="loadPage('t2', this)">T2: Private Trust Company</a>
+        <a href="#t1" onclick="loadPage('t1', this)">T1: Conglomerate/Empire</a>
+        <a id="hidden-link" class="hidden" href="#hidden" onclick="loadPage('hidden', this)">Hidden Page</a>
         <button onclick="signIn()">Sign In</button>
     </div>
     <div id="content">
-        <h1>Welcome to HxD Empire Guide</h1>
-        <p>Select a page from the sidebar.</p>
+        <h1>T7: Solutions</h1>
+        <p>Permanence-seeking deliverables; synthesized journeys toward eternal outputs (e.g., YouTube Services, ROBLOX Ascaria, Clash Royale RW), dependency-defined (≥80% T5 audience reliance).</p>
     </div>
     <script>
         const pages = {
-            t7: '<h1>T7: Solutions</h1><p>Permanence-seeking deliverables; e.g., YouTube Services, ROBLOX Ascaria.</p>',
-            t6: '<h1>T6: Departments</h1><p>Quintessential archetypes; e.g., Social Media, Community Governance.</p>',
-            t5: '<h1>T5: Business Units</h1><p>Solution-centric pods; e.g., Novus Systems, Honcho Collective.</p>',
-            t4: '<h1>T4: Companies</h1><p>Operational commanders; e.g., Next Shift Partners Ltd.</p>',
-            t3: '<h1>T3: Holding Companies</h1><p>Industry-focus representatives; e.g., Honcho Records Ltd.</p>',
-            t2: '<h1>T2: Private Trust Company</h1><p>Immutable governance Bible; e.g., Hidden.</p>',
-            t1: '<h1>T1: Conglomerate/Empire</h1><p>Reflective mirror; e.g., HxD Enterprises.</p>',
-            hidden: '<h1>Hidden Page</h1><p>Content visible only when signed in.</p>'
+            t7: '<h1>T7: Solutions</h1><p>Permanence-seeking deliverables; synthesized journeys toward eternal outputs (e.g., YouTube Services, ROBLOX Ascaria, Clash Royale RW), dependency-defined (≥80% T5 audience reliance).</p>',
+            t6: '<h1>T6: Departments</h1><p>Quintessential archetypes; pre-existing templates (e.g., Social Media, Community Governance) adopted by T5s for multi-BU utility.</p>',
+            t5: '<h1>T5: Business Units</h1><p>Solution-centric pods; e.g., Novus Systems (Operational Hub), Honcho Collective (Audience Hub), spawned with T4 DNA.</p>',
+            t4: '<h1>T4: Companies</h1><p>Operational commanders; execute T3 focus (e.g., Next Shift Partners Ltd) via BU spawning and resource allocation.</p>',
+            t3: '<h1>T3: Holding Companies</h1><p>Industry-focus representatives; strategic ownership (e.g., Honcho Records Ltd) with centralized finance.</p>',
+            t2: '<h1>T2: Private Trust Company</h1><p>Immutable governance Bible; codifies rules (e.g., Hidden) for layered trust, observed by Inner Circle.</p>',
+            t1: '<h1>T1: Conglomerate/Empire</h1><p>Reflective mirror; embodies 3 visions (Honcho, Xegic, David) as HxD Enterprises, mirroring all tiers.</p>',
+            hidden: '<h1>Hidden Page</h1><p>Confidential content visible only to signed-in users; e.g., Inner Circle directives.</p>'
         };
-        function loadPage(page) {
+        function loadPage(page, link) {
             document.getElementById('content').innerHTML = pages[page] || '<p>Page not found.</p>';
+            document.querySelectorAll('#sidebar a').forEach(a => a.classList.remove('active'));
+            link.classList.add('active');
         }
         function signIn() {
             localStorage.setItem('signedIn', 'true');
@@ -51,6 +64,8 @@
         if (localStorage.getItem('signedIn')) {
             document.getElementById('hidden-link').classList.remove('hidden');
         }
+        // Load T7 by default
+        loadPage('t7', document.querySelector('#sidebar a'));
     </script>
 </body>
 </html>
